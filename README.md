@@ -3,6 +3,8 @@
 
 ##  JavaScript
 
+* [函数防抖和函数节流](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/5)
+
 
 ##  Vue
 

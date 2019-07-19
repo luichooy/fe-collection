@@ -5,6 +5,7 @@
 
 * [函数防抖和函数节流](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/5)
 * [Set, WeakSet, Map, WeakMap](https://github.com/luichooy/fe-collection/issues/2)
+* [数组拍平](https://github.com/luichooy/fe-collection/issues/4)
 
 
 ##  Vue

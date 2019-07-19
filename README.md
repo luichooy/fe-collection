@@ -6,6 +6,7 @@
 * [函数防抖和函数节流](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/5)
 * [Set, WeakSet, Map, WeakMap](https://github.com/luichooy/fe-collection/issues/2)
 * [数组拍平](https://github.com/luichooy/fe-collection/issues/4)
+* [有哪些判断数组的方式，以及他们之间的区别和优劣](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/23)
 
 
 ##  Vue

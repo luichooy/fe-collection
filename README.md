@@ -27,3 +27,4 @@
 
 ##  其它
 * [重绘和回流](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/24)
+* [观察者模式和发布订阅模式](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/25)

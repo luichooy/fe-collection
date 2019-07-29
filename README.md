@@ -10,6 +10,7 @@
 
 ##  HTML/CSS
 * [BFC 及其应用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/59)
+* [div水平垂直居中](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/92)
 
 ##  Vue
 

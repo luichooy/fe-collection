@@ -7,6 +7,7 @@
 * [Set, WeakSet, Map, WeakMap](https://github.com/luichooy/fe-collection/issues/2)
 * [数组拍平](https://github.com/luichooy/fe-collection/issues/4)
 * [有哪些判断数组的方式，以及他们之间的区别和优劣](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/23)
+* [箭头函数与普通函数的区别](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/101)
 
 ##  HTML/CSS
 * [BFC 及其应用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/59)

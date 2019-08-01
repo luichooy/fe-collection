@@ -12,6 +12,7 @@
 ##  HTML/CSS
 * [BFC 及其应用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/59)
 * [div水平垂直居中](https://github.com/luichooy/fe-collection/issues/5)
+* [分析比较 opacity: 0、visibility: hidden、display: none 优劣和适用场景](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/100)
 
 ##  Vue
 

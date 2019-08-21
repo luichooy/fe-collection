@@ -17,12 +17,13 @@
 * [分析比较 opacity: 0、visibility: hidden、display: none 优劣和适用场景](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/100)
 
 ##  Vue
+* [解析vue2.0的diff算法](https://github.com/aooy/blog/issues/2)
 
 ##  HTTP
 * [HTTP2多路复用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/14)
 * [TCP三次握手四次挥手](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/15)
+* [强制缓存与协商缓存](https://segmentfault.com/a/1190000016199807?utm_medium=referral&utm_source=tuicool)
 
-* [解析vue2.0的diff算法](https://github.com/aooy/blog/issues/2)
 
 ##  工程化
 * [npm模块安装机制](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/22)

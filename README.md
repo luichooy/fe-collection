@@ -23,6 +23,7 @@
 * [HTTP2多路复用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/14)
 * [TCP三次握手四次挥手](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/15)
 * [强制缓存与协商缓存](https://segmentfault.com/a/1190000016199807?utm_medium=referral&utm_source=tuicool)
+* [跨域资源共享CORS](https://juejin.im/post/5d692dfff265da03d9254df0)
 
 
 ##  工程化

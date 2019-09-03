@@ -36,3 +36,4 @@
 ##  其它
 * [重绘和回流](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/24)
 * [观察者模式和发布订阅模式](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/25)
+* [浏览器事件循环机制](https://www.cnblogs.com/yqx0605xi/p/9267827.html)

@@ -29,6 +29,7 @@
 ##  工程化
 * [npm模块安装机制](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/22)
 * [ES6 -> ES5的实现思路是什么](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/112)
+* [webpack Code Splitting](https://zhuanlan.zhihu.com/p/26710831)
 
 
 ##  业务开发

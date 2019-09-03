@@ -10,6 +10,7 @@
 * [箭头函数与普通函数的区别](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/101)
 * [介绍下深度优先遍历(DFS)和广度优先遍历(BFS)，如何实现？](https://github.com/luichooy/fe-collection/issues/6)
 * [模拟Object.assign](https://github.com/luichooy/fe-collection/issues/7)
+* [自己实现call,apply,bind](https://github.com/luichooy/fe-collection/issues/9)
 
 ##  HTML/CSS
 * [BFC 及其应用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/59)

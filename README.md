@@ -24,6 +24,7 @@
 * [HTTP2多路复用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/14)
 * [TCP三次握手四次挥手](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/15)
 * [强制缓存与协商缓存](https://segmentfault.com/a/1190000016199807?utm_medium=referral&utm_source=tuicool)
+* [JSONP跨域原理](https://blog.csdn.net/badmoonc/article/details/82289252)
 * [跨域资源共享CORS](https://juejin.im/post/5d692dfff265da03d9254df0)
 
 

@@ -26,6 +26,7 @@
 * [强制缓存与协商缓存](https://segmentfault.com/a/1190000016199807?utm_medium=referral&utm_source=tuicool)
 * [JSONP跨域原理](https://blog.csdn.net/badmoonc/article/details/82289252)
 * [跨域资源共享CORS](https://juejin.im/post/5d692dfff265da03d9254df0)
+* [XSS攻击与CSRF攻击](https://juejin.im/post/5c6d142151882503b3271f4b)
 
 
 ##  工程化

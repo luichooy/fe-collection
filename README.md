@@ -24,6 +24,7 @@
 
 ##  网络协议
 * [HTTP2多路复用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/14)
+* [HHTP1.0、HTTP1.1、HTTP2.0之间的区别](https://www.cnblogs.com/heluan/p/8620312.html)
 * [TCP三次握手四次挥手](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/15)
 * [强制缓存与协商缓存](https://segmentfault.com/a/1190000016199807?utm_medium=referral&utm_source=tuicool)
 * [JSONP跨域原理](https://blog.csdn.net/badmoonc/article/details/82289252)

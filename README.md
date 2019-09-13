@@ -46,3 +46,4 @@
 * [观察者模式和发布订阅模式](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/25)
 * [浏览器事件循环机制](https://www.cnblogs.com/yqx0605xi/p/9267827.html)
 * [defer和async的区别](https://segmentfault.com/q/1010000000640869)
+* [preload & prefetch](https://zhuanlan.zhihu.com/p/48521680)

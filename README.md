@@ -12,6 +12,7 @@
 * [模拟Object.assign](https://github.com/luichooy/fe-collection/issues/7)
 * [自己实现call,apply,bind](https://github.com/luichooy/fe-collection/issues/9)
 * [介绍下 Promise.all 使用、原理实现及错误处理](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/130)
+* [手写Promise](https://juejin.im/post/5d78d2316fb9a06aca38494c)
 
 ##  HTML/CSS
 * [BFC 及其应用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/59)

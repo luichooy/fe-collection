@@ -13,6 +13,7 @@
 * [自己实现call,apply,bind](https://github.com/luichooy/fe-collection/issues/9)
 * [介绍下 Promise.all 使用、原理实现及错误处理](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/130)
 * [手写Promise](https://github.com/luichooy/fe-collection/issues/10)
+* [深拷贝](https://juejin.im/post/5d6aa4f96fb9a06b112ad5b1)
 
 ##  HTML/CSS
 * [BFC 及其应用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/59)

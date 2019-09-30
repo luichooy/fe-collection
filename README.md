@@ -51,3 +51,4 @@
 * [浏览器事件循环机制](https://www.cnblogs.com/yqx0605xi/p/9267827.html)
 * [defer和async的区别](https://segmentfault.com/q/1010000000640869)
 * [preload & prefetch](https://zhuanlan.zhihu.com/p/48521680)
+* [stdin, stdout, stderr](https://blog.csdn.net/yinjiabin/article/details/7419895)

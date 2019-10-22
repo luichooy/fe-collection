@@ -24,6 +24,7 @@
 
 ##  Vue
 * [解析vue2.0的diff算法](https://github.com/aooy/blog/issues/2)
+* [Composing Components in Vue.js](https://dulisz.com/blog/composing-components-in-vue-js)
 
 ##  网络协议
 * [HTTP2多路复用](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/14)

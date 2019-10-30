@@ -1,6 +1,6 @@
-##  命令行
+#  命令行
 
-####  install
+##  install
 
 使用 eslint 需首先安装npm，安装 npm 之后安装 eslint
 ```
@@ -17,9 +17,10 @@ eslint file1.js file2.js
 eslint lib/**
 ```
 
-####  options
+##  options
 
-**基本配置**
+### 基本配置
+
 | 配置项  | 含义 | 默认| 示例 |
 | :-----:|  :----|:----:  |:---|
 | `--no-eslintrc`  |禁用 .eslintrc.* 和 package.json 文件中的配置 ||`eslint --no-eslintrc file.js`
@@ -31,18 +32,17 @@ eslint lib/**
 |`--parser-options`|指定 ESLint 要使用的解析器选项,可用的解析器选项取决于你所选用的解析器|||
 |`--resolve-plugins-relative-to`|更改插件解析所在的文件夹|||
 
-**指定 rules 和 plugins**
+### 指定 rules 和 plugins
+
 | 配置项  | 含义 | 默认| 示例 |
 | :-----:|  :----|:----:  |:---|
 | `--rulesdir`  ||||
 | `--plugin`   | 这个选项指定一个要加载的插件。你可以省略插件名的前缀 `eslint-plugin-` ||`eslint --plugin eslint-plugin-mocha file.js` |
 |`--rule`|这个选项指定要使用的规则。这些规则将会与配制文件中指定的规则合并||`eslint --rule 'quotes: [2, double]'`|
 
-**Fixing Problems**
+### Fixing Problems
 
-```
---fix
-```
+##### `--fix`
 
 该选项指示 ESLint 试图修复尽可能多的问题。修复只针对实际文件本身，而且剩下的未修复的问题才会输出。不是所有的问题都能使用这个选项进行修复，该选项在以下情形中不起作用：
 1.  当代码传递给 ESLint 时，这个选项抛出一个错误。
@@ -50,14 +50,11 @@ eslint lib/**
 
 如果你想从 `stdin` 修复代码或希望在不实际写入到文件的情况下进行修复，使用 `--fix-dry-run` 选项。
 
-```
---fix-dry-run
-```
+##### --fix-dry-run
+
 该选项与 --fix 有相同的效果，唯一一点不同是，修复不会保存到文件系统中。
 
-```
---fix-type
-```
+##### --fix-type
 
 此选项允许你在使用 --fix 或 --fix-dry-run 时指定要应用的修复的类型。修复的三种类型是:
 1.  `problem` - 修复代码中的潜在错误
@@ -68,12 +65,95 @@ eslint lib/**
 eslint --fix --fix-type suggestion,layout .
 ```
 
-**忽略文件**
+### 忽略文件
 
 | 配置项  | 含义 | 默认| 示例 |
 | :-----:|  :----|:----:  |:---|
 | `--ignore-path`  |指定一个文件作为`.eslintignore`|`.eslintignore`|`eslint --ignore-path tmp/.eslintignore file.js`|
 | `--no-ignore`   | 禁止排除 `.eslintignore`、`--ignore-path` 和 `--ignore-pattern` 文件中指定的文件 ||`eslint --no-ignore file.js` |
 |`--ignore-pattern`|指定要忽略的文件模式(除了 .eslintignore 中的模式之外)||`eslint --ignore-pattern '/lib/' --ignore-pattern '/src/vendor/*' .`|
+
+### 使用 stdin
+
+| 配置项  | 含义 | 默认| 示例 |
+| :-----:|  :----|:----:  |:---|
+| `--stdin`  |告诉 ESLint 从 STDIN 而不是从文件中读取和检测源码||`cat myfile.js | eslint --stdin`|
+| `--stdin-filename`   | 指定一个文件名去处理 STDIN ||`cat myfile.js | eslint --stdin --stdin-filename=myfile.js` |
+
+### 处理警告
+
+| 配置项  | 含义 | 默认| 示例 |
+| :-----:|  :----|:----:  |:---|
+| `--quiet`  |忽略警告，如果开启这个选项，ESLint 只会报告错误||`eslint --quiet file.js`|
+| `--max-warnings`   | 指定一个警告的阈值，当你的项目中有太多违反规则的警告时，这个阈值被用来强制 ESLint 以错误状态退出 ||`eslint --max-warnings 10 file.js` |
+
+### 输出
+
+| 配置项  | 含义 | 默认| 示例 |
+| :-----:|  :----|:----:  |:---|
+| `-o, --output-file`  |将报告写到一个文件||`eslint -o ./test/test.html`|
+| `-f, --format`   | 指定控制台的输出格式 |`stylish`|`eslint -f compact file.js` |
+| `--color, --no-color`  |强制启用/禁用彩色输出||`eslint --color file.js | cat`|
+
+### Inline configuration comments
+
+| 配置项  | 含义 | 默认| 示例 |
+| :-----:|  :----|:----:  |:---|
+| `--no-inline-config`  |这个选项会阻止像 `/*eslint-disable*/` 或者 `/*global foo*/` 这样的内联注释起作用||`eslint --no-inline-config file.js`|
+| `--report-unused-disable-directives`   |  || |
+
+### 缓存
+
+##### --cache
+
+存储处理过的文件的信息以便只对有改变的文件进行操作。
+
+缓存默认被存储在 `.eslintcache`。
+
+启用这个选项可以显著改善 ESLint 的运行时间，确保只对有改变的文件进行检测
+
+**如果你运行 ESLint --cache，然后又运行 ESLint 不带 --cache，.eslintcache 文件将被删除**
+
+**自动修复的文件不放在缓存中。不触发自动修复的后续检测将把它放在缓存中**
+
+##### --cache-location
+
+缓存文件的路径。可以是一个文件或者一个目录
+
+如果没有指定，则使用 `.eslintcache`
+
+这个文件会在 eslint 命令行被执行的文件目录中被创建。
+
+如果指定一个目录，缓存文件将在指定的文件夹下被创建。文件名将基于当前工作目录（CWD) 的 hash 值，比如：`.cache_hashOfCWD`
+
+**如果不存在缓存文件的目录，请确保在尾部添加 /（*nix 系统）或 \（windows 系统）。否则该路径将被假定为是一个文件**
+
+### 其他
+
+| 配置项  | 含义 | 
+| :-----:|  :----|
+| `--init`  |这个选项将会配置初始化向导。它被用来帮助新用户快速地创建 `.eslintrc` |
+| `--debug`   | 这个选项将调试信息输出到控制台 |
+| `-h, --help`  |输出帮助菜单，显示所有可用的选项|
+| `-v, --version`  |输出当前 ESlint 的版本|
+| `--print-config`  |输出传递的文件使用的配置|
+
+##  Ignoring files from linting
+
+eslint使用`.eslintigonre`文件来避免检测处理,`.eslintignore` 文件是个纯文本文件，每一行都包含一种模式。
+
+它可以放在目标目录的任何父级目录；它将影响到它所在的当前目录和所有子目录。
+
+```
+node_modules/*
+**/vendor/*.js
+```
+
+##  退出码
+
+当检测文件时，ESLint 将使用以下退出代码之一退出:
+* `0`: 检测成功，没有错误。如果 `--max-warnings` 标志被设置为 n，那么警告数量最多为n。
+* `1`: 检测成功，并且至少有一个错误，或者警告多于 --max-warnings 选项所允许的警告。
+* `2`: 由于配置问题或内部错误，检测未能成功。
 
 

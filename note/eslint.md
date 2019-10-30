@@ -34,15 +34,15 @@ eslint lib/**
 
 ### 指定 rules 和 plugins
 
-| 配置项  | 含义 | 默认| 示例 |
-| :-----:|  :----|:----:  |:---|
-| `--rulesdir`  ||||
-| `--plugin`   | 这个选项指定一个要加载的插件。你可以省略插件名的前缀 `eslint-plugin-` ||`eslint --plugin eslint-plugin-mocha file.js` |
-|`--rule`|这个选项指定要使用的规则。这些规则将会与配制文件中指定的规则合并||`eslint --rule 'quotes: [2, double]'`|
+| 配置项  | 含义 |  示例 |
+| :-----:|  :----|:---|
+| `--rulesdir`  |||
+| `--plugin`   | 这个选项指定一个要加载的插件。你可以省略插件名的前缀 `eslint-plugin-` |`eslint --plugin eslint-plugin-mocha file.js` |
+|`--rule`|这个选项指定要使用的规则。这些规则将会与配制文件中指定的规则合并|`eslint --rule 'quotes: [2, double]'`|
 
 ### Fixing Problems
 
-##### `--fix`
+#### `--fix`
 
 该选项指示 ESLint 试图修复尽可能多的问题。修复只针对实际文件本身，而且剩下的未修复的问题才会输出。不是所有的问题都能使用这个选项进行修复，该选项在以下情形中不起作用：
 1.  当代码传递给 ESLint 时，这个选项抛出一个错误。
@@ -50,11 +50,11 @@ eslint lib/**
 
 如果你想从 `stdin` 修复代码或希望在不实际写入到文件的情况下进行修复，使用 `--fix-dry-run` 选项。
 
-##### --fix-dry-run
+#### --fix-dry-run
 
 该选项与 --fix 有相同的效果，唯一一点不同是，修复不会保存到文件系统中。
 
-##### --fix-type
+#### --fix-type
 
 此选项允许你在使用 --fix 或 --fix-dry-run 时指定要应用的修复的类型。修复的三种类型是:
 1.  `problem` - 修复代码中的潜在错误
@@ -75,17 +75,17 @@ eslint --fix --fix-type suggestion,layout .
 
 ### 使用 stdin
 
-| 配置项  | 含义 | 默认| 示例 |
-| :-----:|  :----|:----:  |:---|
-| `--stdin`  |告诉 ESLint 从 STDIN 而不是从文件中读取和检测源码||`cat myfile.js | eslint --stdin`|
-| `--stdin-filename`   | 指定一个文件名去处理 STDIN ||`cat myfile.js | eslint --stdin --stdin-filename=myfile.js` |
+| 配置项  | 含义 |  示例 |
+| :-----:|  :---- |:---|
+| `--stdin`  |告诉 ESLint 从 STDIN 而不是从文件中读取和检测源码|`cat myfile.js | eslint --stdin`|
+| `--stdin-filename`   | 指定一个文件名去处理 STDIN |`cat myfile.js | eslint --stdin --stdin-filename=myfile.js` |
 
 ### 处理警告
 
-| 配置项  | 含义 | 默认| 示例 |
-| :-----:|  :----|:----:  |:---|
-| `--quiet`  |忽略警告，如果开启这个选项，ESLint 只会报告错误||`eslint --quiet file.js`|
-| `--max-warnings`   | 指定一个警告的阈值，当你的项目中有太多违反规则的警告时，这个阈值被用来强制 ESLint 以错误状态退出 ||`eslint --max-warnings 10 file.js` |
+| 配置项  | 含义 | 示例 |
+| :-----:|  :----|:---|
+| `--quiet`  |忽略警告，如果开启这个选项，ESLint 只会报告错误|`eslint --quiet file.js`|
+| `--max-warnings`   | 指定一个警告的阈值，当你的项目中有太多违反规则的警告时，这个阈值被用来强制 ESLint 以错误状态退出 |`eslint --max-warnings 10 file.js` |
 
 ### 输出
 
@@ -97,14 +97,14 @@ eslint --fix --fix-type suggestion,layout .
 
 ### Inline configuration comments
 
-| 配置项  | 含义 | 默认| 示例 |
-| :-----:|  :----|:----:  |:---|
-| `--no-inline-config`  |这个选项会阻止像 `/*eslint-disable*/` 或者 `/*global foo*/` 这样的内联注释起作用||`eslint --no-inline-config file.js`|
-| `--report-unused-disable-directives`   |  || |
+| 配置项  | 含义 | 示例 |
+| :-----:|  :----|:---|
+| `--no-inline-config`  |这个选项会阻止像 `/*eslint-disable*/` 或者 `/*global foo*/` 这样的内联注释起作用|`eslint --no-inline-config file.js`|
+| `--report-unused-disable-directives`   |  | |
 
 ### 缓存
 
-##### --cache
+#### --cache
 
 存储处理过的文件的信息以便只对有改变的文件进行操作。
 
@@ -116,7 +116,7 @@ eslint --fix --fix-type suggestion,layout .
 
 **自动修复的文件不放在缓存中。不触发自动修复的后续检测将把它放在缓存中**
 
-##### --cache-location
+#### --cache-location
 
 缓存文件的路径。可以是一个文件或者一个目录
 

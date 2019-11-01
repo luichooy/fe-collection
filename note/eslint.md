@@ -1,3 +1,283 @@
+# 配置
+有两种方式来配置 eslint
+1.  使用 js 注释直接把配置信息嵌入到代码源文件中
+1.  使用 JavaScript，JSON 或 YAML 文件为整个目录和它的子目录指定配置信息
+
+使用第二种方式指定配置信息的方式有：
+* 在`.eslintrc.*`中配置
+* 在 `package.json` 中的`eslintConfig`字段指定配置信息
+
+注意： **如果你的主目录（通常 ~/）存在一个配置文件，eslint 只有在找不到其他配置文件时才使用它**
+
+##  指定解析器选项（Specifying Parse Options）
+解析器选项用来指定你想要支持的 `JavaScript` 语言选项，设置解析器选项能帮助 ESLint 确定什么是解析错误。eslint 默认支持 `ECMAScript 5` 语法，你可以覆盖该设置，以启用对 `ECMAScript` 其它版本和 `JSX` 的支持。
+
+注意： **支持 JSX 并不意味着支持 React，支持 es6语法并不意味着同时支持 es6新的全局变量或类型**
+
+解析器选项可以在 `.eslintrc.*` 文件使用 `parserOptions` 属性设置。可用的选项有：
+* `ecmaVersion`: 默认为3，5，可以设置为 6（2015），7（2016），8（2017），9（2018），10（2019）
+* `sourceType`: 默认`"script"`，如果你使用 `ECMAScript` 模块，可以设置为`"module"`,
+* `ecmaFeatures`: 对象，标识你想使用的额外的语言特性：
+  * `globalReturn`: 允许在全局作用域下使用`return`语句
+  * `impliedStrict`: 启用全局`strict mode`(如果ecmaVersion是 5 或者更高)
+  * `JSX`: 启用 JSX
+
+```
+// 示例：
+
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "semi": "error"
+    }
+}
+```
+
+##  指定解析器（Specifying Parser）
+通过`parse`选项来指定解析器，eslint默认的解析器是`Espree`,你可以通过该选项指定其他解析器。
+```
+{
+    "parser": "esprima",
+    "rules": {
+        "semi": "error"
+    }
+}
+```
+
+##  指定处理器（Specifying Processor）
+插件可以提供处理器。处理器可以从另一种文件中提取 JavaScript 代码，然后让 ESLint 检测 JavaScript 代码。或者处理器可以在预处理中转换 JavaScript 代码。
+
+使用`processor`来指定处理器，并使用由插件名和处理器名组成的串接字符串加上斜杠。例如，下面的选项启用插件 `a-plugin` 提供的处理器 `a-processor`：
+```
+{
+    "plugins": ["a-plugin"],
+    "processor": "a-plugin/a-processor"
+}
+```
+要为特定类型的文件指定处理器，请使用 `overrides` 键和 `processor` 键的组合。例如，下面对 `*.md` 文件使用处理器 `a-plugin/markdown`
+```
+{
+    "plugins": ["a-plugin"],
+    "overrides": [
+        {
+            "files": ["*.md"],
+            "processor": "a-plugin/markdown"
+        }
+    ]
+}
+```
+处理器可以生成命名的代码块，如 `0.js` 和 `1.js`。`ESLint` 将这样的命名代码块作为原始文件的子文件处理。你可以在配置的 `overrides` 部分为已命名的代码块指定附加配置。例如，下面的命令对以 `.js` 结尾的 `markdown` 文件中的已命名代码块禁用 `strict` 规则：
+```
+{
+    "plugins": ["a-plugin"],
+    "overrides": [
+        {
+            "files": ["*.md"],
+            "processor": "a-plugin/markdown"
+        },
+        {
+            "files": ["**/*.md/*.js"],
+            "rules": {
+                "strict": "off"
+            }
+        }
+    ]
+}
+```
+
+##  指定环境（Specifying Environments）
+一个环境定义了一组预定义的全局变量。可用的环境包括：
+* `browser` - 浏览器环境中的全局变量。
+* `node` - Node.js 全局变量和 Node.js 作用域。
+* `commonjs` - CommonJS 全局变量和 CommonJS 作用域 (用于 Browserify/WebPack 打包的只在浏览器中运行的代码)。
+* `shared-node-browser` - Node.js 和 Browser 通用全局变量。
+* `es6` - 启用除了 modules 以外的所有 ECMAScript 6 特性（该选项会自动设置 ecmaVersion 解析器选项为 6）。
+* `worker` - Web Workers 全局变量。
+* `amd` - 将 require() 和 define() 定义为像 amd 一样的全局变量。
+* `mocha` - 添加所有的 Mocha 测试全局变量。
+* `jasmine` - 添加所有的 Jasmine 版本 1.3 和 2.0 的测试全局变量。
+* `jest` - Jest 全局变量。
+* `phantomjs` - PhantomJS 全局变量。
+* `protractor` - Protractor 全局变量。
+* `qunit` - QUnit 全局变量。
+* `jquery` - jQuery 全局变量。
+* `prototypejs` - Prototype.js 全局变量。
+* `shelljs` - ShellJS 全局变量。
+* `meteor` - Meteor 全局变量。
+* `mongo` - MongoDB 全局变量。
+* `applescript` - AppleScript 全局变量。
+* `nashorn` - Java 8 Nashorn 全局变量。
+* `serviceworker` - Service Worker 全局变量。
+* `atomtest` - Atom 测试全局变量。
+* `embertest` - Ember 测试全局变量。
+* `webextensions` - WebExtensions 全局变量。
+* `greasemonkey` - GreaseMonkey 全局变量。
+
+这些环境并不是互斥的，所以你可以同时定义多个。
+
+```
+// 在 JavaScript 文件中使用注释来指定环境
+/* eslint-env node, mocha */
+
+// .eslintrc
+{
+    "env": {
+        "browser": true,
+        "node": true
+    }
+}
+```
+
+如果你想在一个特定的插件中使用一种环境，确保提前在 plugins 数组里指定了插件名，然后在 env 配置中不带前缀的插件名后跟一个 / ，紧随着环境名。例如：
+
+```
+{
+    "plugins": ["example"],
+    "env": {
+        "example/custom": true
+    }
+}
+```
+
+##  指定全局变量（Specifying Globals）
+当访问当前源文件内未定义的变量时，`no-undef` 规则将发出警告。如果你想在一个源文件里使用全局变量，推荐你在 ESLint 中定义这些全局变量，这样 ESLint 就不会发出警告了。你可以使用注释或在配置文件中定义全局变量。
+
+要在你的 JavaScript 文件中，用注释指定全局变量，格式如下：
+```
+/* global var1, var2 */
+```
+如果你想选择性地指定这些全局变量可以被写入(而不是只被读取)，那么你可以用一个 `"writable"` 的标志来设置它们:
+```
+/* global var1:writable, var2:writable */
+```
+在配置文件中指定
+```
+// .eslintrc
+{
+    "globals": {
+        "var1": "writable",
+        "var2": "readonly"
+    }
+}
+```
+可以使用字符串 "off" 禁用全局变量。例如，在大多数 ES2015 全局变量可用但 Promise 不可用的环境中，你可以使用以下配置:
+```
+{
+    "env": {
+        "es6": true
+    },
+    "globals": {
+        "Promise": "off"
+    }
+}
+```
+**注意**：要启用no-global-assign规则来禁止对只读的全局变量进行修改。
+
+##  配置插件
+ESLint 支持使用第三方插件。在使用插件之前，你必须使用 npm 安装它。
+
+使用`plugins`来配置插件列表，插件名称可以省略 eslint-plugin- 前缀。
+```
+{
+    "plugins": [
+        "plugin1",
+        "eslint-plugin-plugin2"
+    ]
+}
+```
+
+##  配置规则（Configuring Rules）
+要改变一个规则设置，你必须将规则 ID 设置为下列值之一：
+* `"off"` 或 `0` - 关闭规则
+* `"warn"` 或 `1` - 开启规则，使用警告级别的错误：`warn` (不会导致程序退出)
+* `"error"` 或 `2` - 开启规则，使用错误级别的错误：`error` (当被触发的时候，程序会退出)
+
+####  使用注释配置规则
+```
+/* eslint eqeqeq: "off", curly: "error" */
+
+/* eslint eqeqeq: 0, curly: 2 */
+
+/* eslint quotes: ["error", "double"], curly: 2 */
+
+/* eslint "plugin1/rule1": "error" */
+```
+
+####  使用配置文件配置规则
+```
+{
+    "rules": {
+        "eqeqeq": "off",
+        "curly": "error",
+        "quotes": ["error", "double"]
+    }
+}
+```
+配置定义在插件中的一个规则的时候，你必须使用 插件名/规则ID 的形式。比如：
+```
+{
+    "plugins": [
+        "plugin1"
+    ],
+    "rules": {
+        "eqeqeq": "off",
+        "curly": "error",
+        "quotes": ["error", "double"],
+        "plugin1/rule1": "error"
+    }
+}
+```
+**注意**：当指定来自插件的规则时，确保删除 eslint-plugin- 前缀。ESLint 在内部只使用没有前缀的名称去定位规则。
+
+##  添加共享设置（Adding Shared Settings）
+eslint通过`settings`对象在配置文件中添加共享设置，这些共享设置将被提供给每一个规则。如果你想添加的自定义规则而且使它们可以访问到相同的信息，这将会很有用，并且很容易配置。
+```
+{
+    "settings": {
+        "sharedData": "Hello"
+    }
+}
+```
+
+##  eslint配置文件
+####  eslint寻找配置文件过程
+ESLint 将自动在要检测的文件目录里寻找它们，紧接着是父级目录，一直到文件系统的根目录（除非指定 root: true）
+####  各种配置文件的优先级
+* .eslintrc.js
+* .eslintrc.yaml
+* .eslintrc.yml
+* .eslintrc.json
+* .eslintrc（弃用）
+* package.json
+
+####  配置有层次结构（及多层目录结构中存在多个配置）时的优先级：
+1.  行内配置
+    1.  `/*eslint-disable*/` 和 `/*eslint-enable*/`
+    1.  `/*global*/`
+    1.  `/*eslint*/`
+    1.  `/*eslint-env*/`
+1.  命令行选项（或 CLIEngine 等价物）：
+    1.  `--global`
+    1.  `--rule`
+    1.  `--env`
+    1.  `-c、--config`
+1.  项目级配置：
+    1.  与要检测的文件在同一目录下的 `.eslintrc.*` 或 `package.json` 文件
+    1.  继续在父级目录寻找 `.eslintrc` 或 `package.json`文件，直到根目录（包括根目录）或直到发现一个有`"root": true`的配置。
+1.  如果不是（1）到（3）中的任何一种情况，退回到 `~/.eslintrc` 中自定义的默认配置。
+
+##  继承（Extending Configuration Files）
+`extends` 属性值可以是：
+* 指定配置的字符串(配置文件的路径、可共享配置的名称、`eslint:recommended` 或 `eslint:all`)
+* 字符串数组：每个配置继承它前面的配置
+
+
 #  命令行
 
 ##  install
@@ -155,5 +435,7 @@ node_modules/*
 * `0`: 检测成功，没有错误。如果 `--max-warnings` 标志被设置为 n，那么警告数量最多为n。
 * `1`: 检测成功，并且至少有一个错误，或者警告多于 --max-warnings 选项所允许的警告。
 * `2`: 由于配置问题或内部错误，检测未能成功。
+
+#   配置
 
 

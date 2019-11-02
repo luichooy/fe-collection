@@ -9,12 +9,12 @@
 
 注意： **如果你的主目录（通常 ~/）存在一个配置文件，eslint 只有在找不到其他配置文件时才使用它**
 
-##  指定解析器选项（Specifying Parse Options）
+##  `parseOptions`
 解析器选项用来指定你想要支持的 `JavaScript` 语言选项，设置解析器选项能帮助 ESLint 确定什么是解析错误。eslint 默认支持 `ECMAScript 5` 语法，你可以覆盖该设置，以启用对 `ECMAScript` 其它版本和 `JSX` 的支持。
 
 注意： **支持 JSX 并不意味着支持 React，支持 es6语法并不意味着同时支持 es6新的全局变量或类型**
 
-解析器选项可以在 `.eslintrc.*` 文件使用 `parserOptions` 属性设置。可用的选项有：
+可用的选项有：
 * `ecmaVersion`: 默认为3，5，可以设置为 6（2015），7（2016），8（2017），9（2018），10（2019）
 * `sourceType`: 默认`"script"`，如果你使用 `ECMAScript` 模块，可以设置为`"module"`,
 * `ecmaFeatures`: 对象，标识你想使用的额外的语言特性：
@@ -39,8 +39,8 @@
 }
 ```
 
-##  指定解析器（Specifying Parser）
-通过`parse`选项来指定解析器，eslint默认的解析器是`Espree`,你可以通过该选项指定其他解析器。
+##  `parser`
+`parse`用来指定解析器，eslint默认的解析器是`Espree`,你可以通过该选项指定其他解析器。
 ```
 {
     "parser": "esprima",
@@ -50,10 +50,10 @@
 }
 ```
 
-##  指定处理器（Specifying Processor）
-插件可以提供处理器。处理器可以从另一种文件中提取 JavaScript 代码，然后让 ESLint 检测 JavaScript 代码。或者处理器可以在预处理中转换 JavaScript 代码。
+##  `processor`
+`processor`选项用来指定处理器。插件可以提供处理器。处理器可以从另一种文件中提取 JavaScript 代码，然后让 ESLint 检测 JavaScript 代码。或者处理器可以在预处理中转换 JavaScript 代码。
 
-使用`processor`来指定处理器，并使用由插件名和处理器名组成的串接字符串加上斜杠。例如，下面的选项启用插件 `a-plugin` 提供的处理器 `a-processor`：
+`process`的值由插件名和处理器名组成的串接字符串加上斜杠。例如，下面的选项启用插件 `a-plugin` 提供的处理器 `a-processor`：
 ```
 {
     "plugins": ["a-plugin"],
@@ -91,8 +91,8 @@
 }
 ```
 
-##  指定环境（Specifying Environments）
-一个环境定义了一组预定义的全局变量。可用的环境包括：
+##  `env`
+`env`选项用来指定环境。一个环境定义了一组预定义的全局变量。可用的环境包括：
 * `browser` - 浏览器环境中的全局变量。
 * `node` - Node.js 全局变量和 Node.js 作用域。
 * `commonjs` - CommonJS 全局变量和 CommonJS 作用域 (用于 Browserify/WebPack 打包的只在浏览器中运行的代码)。
@@ -145,8 +145,10 @@
 }
 ```
 
-##  指定全局变量（Specifying Globals）
-当访问当前源文件内未定义的变量时，`no-undef` 规则将发出警告。如果你想在一个源文件里使用全局变量，推荐你在 ESLint 中定义这些全局变量，这样 ESLint 就不会发出警告了。你可以使用注释或在配置文件中定义全局变量。
+##  `globals`
+`globals`选项用来指定全局变量。当访问当前源文件内未定义的变量时，`no-undef` 规则将发出警告。如果你想在一个源文件里使用全局变量，推荐你在 ESLint 中定义这些全局变量，这样 ESLint 就不会发出警告了。
+
+你可以使用注释或在配置文件中定义全局变量。
 
 要在你的 JavaScript 文件中，用注释指定全局变量，格式如下：
 ```
@@ -179,10 +181,10 @@
 ```
 **注意**：要启用no-global-assign规则来禁止对只读的全局变量进行修改。
 
-##  配置插件
-ESLint 支持使用第三方插件。在使用插件之前，你必须使用 npm 安装它。
+##  `plugins`
+`plugins`用来配置插件列表。ESLint 支持使用第三方插件。在使用插件之前，你必须使用 npm 安装它。
 
-使用`plugins`来配置插件列表，插件名称可以省略 eslint-plugin- 前缀。
+插件名称可以省略 `eslint-plugin-` 前缀。
 ```
 {
     "plugins": [
@@ -192,7 +194,9 @@ ESLint 支持使用第三方插件。在使用插件之前，你必须使用 npm
 }
 ```
 
-##  配置规则（Configuring Rules）
+##  `rules`
+`rules`选项用来指定规则。
+
 要改变一个规则设置，你必须将规则 ID 设置为下列值之一：
 * `"off"` 或 `0` - 关闭规则
 * `"warn"` 或 `1` - 开启规则，使用警告级别的错误：`warn` (不会导致程序退出)
@@ -235,8 +239,8 @@ ESLint 支持使用第三方插件。在使用插件之前，你必须使用 npm
 ```
 **注意**：当指定来自插件的规则时，确保删除 eslint-plugin- 前缀。ESLint 在内部只使用没有前缀的名称去定位规则。
 
-##  添加共享设置（Adding Shared Settings）
-eslint通过`settings`对象在配置文件中添加共享设置，这些共享设置将被提供给每一个规则。如果你想添加的自定义规则而且使它们可以访问到相同的信息，这将会很有用，并且很容易配置。
+##  `settings`
+`settings`对象用来在配置文件中添加共享设置，这些共享设置将被提供给每一个规则。如果你想添加的自定义规则而且使它们可以访问到相同的信息，这将会很有用，并且很容易配置。
 ```
 {
     "settings": {
@@ -272,8 +276,8 @@ ESLint 将自动在要检测的文件目录里寻找它们，紧接着是父级�
     1.  继续在父级目录寻找 `.eslintrc` 或 `package.json`文件，直到根目录（包括根目录）或直到发现一个有`"root": true`的配置。
 1.  如果不是（1）到（3）中的任何一种情况，退回到 `~/.eslintrc` 中自定义的默认配置。
 
-##  继承（Extending Configuration Files）
-`extends` 属性值可以是：
+##  `extends`
+`extends`用来指定继承关系，其值可以是：
 * 指定配置的字符串(配置文件的路径、可共享配置的名称、`eslint:recommended` 或 `eslint:all`)
 * 字符串数组：每个配置继承它前面的配置
 
@@ -435,7 +439,5 @@ node_modules/*
 * `0`: 检测成功，没有错误。如果 `--max-warnings` 标志被设置为 n，那么警告数量最多为n。
 * `1`: 检测成功，并且至少有一个错误，或者警告多于 --max-warnings 选项所允许的警告。
 * `2`: 由于配置问题或内部错误，检测未能成功。
-
-#   配置
 
 

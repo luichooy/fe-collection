@@ -146,39 +146,36 @@ module.exports = () => ({
 
 ### preset的排列顺序和参数指定同插件
 
-##  用法
-### Options
-####  Primary options
-##### `cwd`
+## Options
+###  Primary options
+#### `cwd`
 type: `String`
 
 default: `process.cwd()`
 
 程序 options中的所有路径将相对于该工作目录进行解析
 
-##### ``
-
-### polyfill
+## polyfill
 babel包含了一个polyfill,这个 polyfill 包括了自定义的[regenerator runtime](https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js) 和 [core-js](https://github.com/zloirock/core-js)
 
 polyfill模拟了一个完整的 ES2015+环境（不小于 Stage 4 提案），并且它将被用在一个应用程序当中而并非库/工具（当使用`babel-node`时，polyfill 会被自动加载）。
 
 这意味着你可以使用如`Promise`，`WeakMap`这样的内置对象；`Array.from`，`Object.assign`这样的静态方法；`Array.prototype.includes`这样的实例方法；generator functions(使用`regenerator`插件提供)。为了做到这些，polyfill 将这些添加到全局作用域和像 `String` 这样的原生原型上。
 
-####  Installation
+###  Installation
 ```
 npm install --save @babel/polyfill
 ```
 
 > 因为这是 polyfill（在源代码运行之前运行），需要作为`dependency`而不是`devDependency`
 
-####  Size
+###  Size
 polyfill 使用是很方便的，但你应该和`@babel/preset-env`，`useBuiltIns option`一起使用，以便于不要把整个 polyfill（有事并不需要）都包括进去。或者我们建议你手动的导入单独的 polyfill。
 
 ####  TC39 Proposals
 如果你使用一个不是 Stage 4 阶段的提案，`@babel/polyfill`将不会为你自动导入这些。你必须单独地从其他像`core-js`这样的polyfil导入这些。我们可能会尽快将其作为单独的文件包含在`@babel/polyfill`中。
 
-####  Usage in Node/Browserify/Webpack
+###  Usage in Node/Browserify/Webpack
 在你的应用的`entry point`的顶部加载你所需要的 polyfill。
 > 确保它在其他的代码或者 require语句之前被调用。
 ```
@@ -202,12 +199,12 @@ module.exports = {
 * 如果没有使用`@babel/preset-env`，那么像上面讨论中那样，直接把`@babel/polyfill`添加到webpack 的 entry array 中。它将仍然被通过`require/import`的方式添加到应用`entry point`的顶部，但不建议这样做。
 > 不建议直接引入整个 polyfill，反之应该尝试`useBuildIns option`或者手动引入你需要的 polyfill（无论是从这个包还是别的什么地方）。
 
-####  Usage in Browser
+###  Usage in Browser
 来自于`@babel/polyfill`的 npm 发布包的`dist/polyfill.js`是可用的。它需要在你所有的已编译 babel 代码之前被包含进来。你也可以将它添加到已编译代码的前面或者通过`script`标签引入。
 
 **注意：**不要通过browserify等引入，使用`@babel/polyfill`。
 
-####  Detail
+###  Detail
 > 如果你正在寻找能在工具/库 中使用，且不修改 `globals`，请查看[transform-runtime](https://www.babeljs.cn/docs/babel-plugin-transform-runtime)。这意味着您将无法使用上面提到的实例方法，例如`Array.prototype.includes`。
 
 注意：根据您实际使用的ES2015方法，您可能不需要使用`@babel/polyfill`或运行时插件。 您可能只想加载正在使用的特定polyfill（例如`Object.assign`），或者仅记录正在加载库的环境应包含某些polyfill的文档（or just document that the environment the library is being loaded in should include certain polyfills）。

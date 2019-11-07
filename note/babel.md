@@ -208,3 +208,62 @@ module.exports = {
 > 如果你正在寻找能在工具/库 中使用，且不修改 `globals`，请查看[transform-runtime](https://www.babeljs.cn/docs/babel-plugin-transform-runtime)。这意味着您将无法使用上面提到的实例方法，例如`Array.prototype.includes`。
 
 注意：根据您实际使用的ES2015方法，您可能不需要使用`@babel/polyfill`或运行时插件。 您可能只想加载正在使用的特定polyfill（例如`Object.assign`），或者仅记录正在加载库的环境应包含某些polyfill的文档（or just document that the environment the library is being loaded in should include certain polyfills）。
+
+
+##  `@babel/plugin-transform-runtime`
+### installation
+```
+npm install --save-dev @babel/plugin-transform-runtime
+
+npm install --save @babel/runtime
+```
+
+转换插件只能在开发环境下使用，但运行时将被你发布的代码所依赖，所以需要在生产环境安装。下面的例子将提供更多的细节。
+
+### Why?
+
+### Usage
+
+####  通过`.babelrc`（建议）
+把下面的内容添加到`.babelrc`
+
+without options:
+```
+{ 
+  "plugins": ["@babel/plugin-transform-runtime"]
+}
+```
+
+With options (and their defaults):
+```
+{
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "absoluteRuntime": false,
+        "corejs": false,
+        "helpers": true,
+        "regenerator": true,
+        "useESModules": false
+      }
+    ]
+  ]
+}
+```
+####  通过 `CLI`
+```
+babel --plugins @babel/plugin-transform-runtime script.js
+```
+####  通过 Node API
+```
+require("@babel/core").transform("code", {
+  plugins: ["@babel/plugin-transform-runtime"],
+});
+```
+
+### Options
+####  `corejs`
+`String`或`Number`，默认`false`
+
+eg. `['@babel/plugin-transform-runtime',{corejs: 2}]`
